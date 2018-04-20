@@ -13,7 +13,7 @@ class OrganizationController < ApplicationController
       @organization = Organization.new(organization_params)
       @user = current_user
       @organization.user = @user
-      @organization.members += @user
+      @organization.members += [@user]
       if @organization.save
         p "~~~~~~~~~~~~~~~~~~"
         redirect_to "/organizations"
@@ -26,6 +26,7 @@ class OrganizationController < ApplicationController
 
   def show
     @organization = Organization.find(params[:id])
+    @members = Organization.includes(:members).all
   end
 
   def join
@@ -45,8 +46,9 @@ class OrganizationController < ApplicationController
   def leave
     @organization = Organization.find(params[:id])
     @user = current_user
-    @organization.members.delete(@user)
-    redirect_to "/events"
+    @members = Organization.includes(:members).all
+    @members.delete(@user)
+    redirect_to "/organizations"
   end
 
   private
