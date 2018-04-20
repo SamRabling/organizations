@@ -7,8 +7,8 @@
     <% end %>
     <form action= "users/create" method = "post">
         <input type="hidden" name="authenticity_token" value = "<%=form_authenticity_token%>">
-        <label> First Name:</label><input type="text" name="user[first_name">
-        <label> Last Name:</label><input type="text" name="user[first_name">
+        <label> First Name:</label><input type="text" name="user[first_name]">
+        <label> Last Name:</label><input type="text" name="user[last_name]">
         <label> Email:</label> <input type="text" name="user[email]">
         <p>Make sure your password is at least 8 characters.</p>
         <label> Password:</label> <input type="text" name="user[password]"> 

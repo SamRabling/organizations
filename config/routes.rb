@@ -11,7 +11,9 @@ Rails.application.routes.draw do
 
   get 'organizations' => 'organization#index'
 
-  get 'organizations/create' => 'organization#create'
+  get 'organizations/:id' => 'organization#show'
+
+  post 'organizations/create' => 'organization#create'
 
   delete 'organizations/:id/destroy' => 'organization#destroy'
 

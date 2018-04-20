@@ -7,20 +7,21 @@
     <% @organization.each do |org| %>
         <h3><%= org.name %></h3>
         <p><%= org.description %></p>
-        <% if org.memberships.exits?(current_user)%><a href="/organizations/<%= organization.id %>/join" data-method="patch">Join Organization</a>
-        <% else %><a href="/organizations/<%= organization.id %>/delete" data-method="delete">Leave Organization</a>
+        <% if org.members.exits?(current_user)%><a href="/organizations/<%= org.id %>/join" data-method="patch">Join Organization</a>
+        <% else %><a href="/organizations/<%= org.id %>/delete" data-method="delete">Leave Organization</a>
         <% end %>
         <br>
         <br>
-        <%= if organization.user == current user%>
+        <% if org.user == @user%>
         <h3>Created by: You!</h3>
         <% else %>
         <h3>Created by: <%=org.user.first_name%> <%=org.user.last_name%></h3>
         <% end %>
         <h4>Members:</h4>
         <ol>
-            <%= org.memberships.each do |member|%>
+            <%= org.members.each do |member|%>
             <li><%=member.first_name%> <%=member.last_name%></li>
+            <% end %>
         </ol>
     <% end %>     
 </div>
