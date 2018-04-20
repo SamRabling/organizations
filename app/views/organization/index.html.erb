@@ -8,7 +8,7 @@
         <h3>Here are the organizations you may join:</h3>
         <% @organizations.each do |organization|%>
             <h5><a href="/organizations/<%=organization.id%>"><%= organization.name %></a></h5>
-            <p>Members: <%=organization.members.length%></p>
+            <p>Members: <%=@members.count%></p>
             <p><%=organization.description%></p>
             <% if organization.user == @user %>
                 <p><a href="/organizations/<%= organization.id %>/destroy" data-method="delete">Delete Organization</a></p>
