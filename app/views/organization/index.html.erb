@@ -1,0 +1,34 @@
+<div class="header">
+    <h1>Hi <%=user.first_name%> <%=user.first_name%>!</h1>
+    <h2><a href="/logout"</a>Logout</h2>
+<div>
+
+<div class="wrapper">
+    <div class="main-content">
+        <h3>Here are the organizations you may join:</h3>
+        <% @organizations.each do |org|%>
+            <h5><a href=""><%= organization.name %></a></h5>
+            <p>Members: <%=organization.memberships.count%></p>
+            <p><%=organization.content%></p>
+            <%= if organization.user == current user%>
+                <p><a href="/organizations/<%= organization.id %>/destroy" data-method="delete">Delete Organization</a></p>
+            <% end %>
+        <% end %>
+    </div>
+
+    <div class="create-org">
+        <h3>Create a new organization:</h3>
+        <% if flash[:errors] %>
+            <% flash[:errors].each do |error| %>
+                <h4><%= error %> </h4>
+            <% end %>
+        <% end %>
+
+        <form action="/organizations/create" method="post">
+            <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+            <label> Organization Name:</label><input type="text" name="organization[name]">
+            <label> Description:</label><input type="text" name="organization[description]">
+            <input type = "submit" value = "Create" name="submit">
+        </form>
+    </div>
+</div>

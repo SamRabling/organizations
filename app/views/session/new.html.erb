@@ -1,14 +1,14 @@
-<h1>Sign in!</h1>
-
-<% if flash[:errors] %>
-    <% flash[:errors].each do |error| %>
-        <h5> <%= error %> </h5>
+<div class="login">
+    <h1>Come on in!</h1>
+    <% if flash[:errors] %>
+        <% flash[:errors].each do |error| %>
+            <h5> <%= error %> </h5>
+        <% end %>
     <% end %>
-<% end %>
-
-<form action= "sessions/create" method = "post">
-    <input type="hidden" name="authenticity_token" value = "<%=form_authenticity_token%>">
-    <label> Email:</label> <input type="text" name="user[email]">
-    <label> Password:</label> <input type="text" name="user[password]"> 
-    <input type="submit" value="Log In" name="submit">
-</form>
+    <form action= "sessions/create" method = "post">
+        <input type="hidden" name="authenticity_token" value = "<%=form_authenticity_token%>">
+        <label> Email:</label> <input type="text" name="user[email]">
+        <label> Password:</label> <input type="text" name="user[password]"> 
+        <input type="submit" value="Log In" name="submit">
+    </form>
+</div>
