@@ -5,18 +5,9 @@ class OrganizationController < ApplicationController
   def destroy
   end
 
-  def update
-  end
-
-  def edit
-  end
-
-  def logout
-  end
-
   def join
   end
 
-  def cancel
+  def leave
   end
 end

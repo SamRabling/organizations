@@ -1,37 +1,23 @@
 Rails.application.routes.draw do
-  get 'organization/new'
+  root 'user#new'
 
-  get 'organization/destroy'
+  post 'user/create' => 'user#create'
 
-  get 'organization/update'
+  get 'session/new' => 'session#new'
 
-  get 'organization/edit'
+  post 'session/create' => 'session#create'
 
-  get 'organization/logout'
+  get 'logout' => 'session#destroy'
 
-  get 'organization/join'
+  get 'organization/create' => 'organization#create'
 
-  get 'organization/cancel'
+  delete 'organization/destroy' => 'organization#destroy'
 
-  get 'user/new'
+  patch 'organization/join' => 'organization#join'
 
-  get 'user/destroy'
+  delete 'organization/leave' => 'organization#leave'
 
-  get 'user/update'
 
-  get 'user/edit'
-
-  get 'user/logout'
-
-  get 'user/join'
-
-  get 'user/cancel'
-
-  get 'session/new'
-
-  get 'session/destoy'
-
-  get 'session/create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
