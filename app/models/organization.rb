@@ -3,5 +3,5 @@ class Organization < ActiveRecord::Base
   has_many :users, through: :members
 
   validates :name, presence: true
-  validates :description, presence: true, length: {maximum: 500} 
+  validates :description, presence: true, length: {minimum: 10} 
 end
