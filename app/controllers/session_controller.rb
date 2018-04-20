@@ -9,14 +9,14 @@ class SessionController < ApplicationController
     else 
       flash[:errors] = ["Invalid Combination"]
       p "****************" 
-      redirect_to "/sessions/new"
+      redirect_to "/"
       p "****************" 
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to "/sessions/new"
+    redirect_to "/"
   end
 
 end
