@@ -28,19 +28,21 @@ class OrganizationController < ApplicationController
   def join
     @organization = Organization.find(params[:id])
     @user = current_user
-    @organization.members += [@user]
-    redirect_to "/events"
+    @user.members += [@organization]
+    redirect_to "/organizations"
   end
 
   def destroy
     @organization = Organization.find(params[:id])
+    @organization.destroy
+    redirect_to "/organizations"
 
   end
 
   def leave
     @organization = Organization.find(params[:id])
     @user = current_user
-    @organization.member.delete(@user)
+    @organization.members.delete(@user)
     redirect_to "/events"
   end
 

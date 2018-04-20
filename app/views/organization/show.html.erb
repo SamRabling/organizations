@@ -1,27 +1,25 @@
 <div class="header">
-    <h2><a href="/organizations/index"</a>Dashboard</h2>
-    <h2><a href="/logout"</a>Logout</h2>
+    <h2><a href="/organizations"</a>Dashboard</h2>
+    <h2><a href="/logout">Log Out</a></h2>
 <div>
 
 <div class="main-content">
-    <% @organization.each do |org| %>
-        <h3><%= org.name %></h3>
-        <p><%= org.description %></p>
-        <% if org.members.exits?(current_user)%><a href="/organizations/<%= org.id %>/join" data-method="patch">Join Organization</a>
-        <% else %><a href="/organizations/<%= org.id %>/delete" data-method="delete">Leave Organization</a>
+        <h3><%= @organization.name %></h3>
+        <p><%= @organization.description %></p>
+        <% if @organization.members.exists?(@user)%><a href="/organizations/<%= @organization.id %>/join" data-method="patch">Join Organization</a>
+        <% else %><a href="/organizations/<%= @organization.id %>/leave" data-method="delete">Leave Organization</a>
         <% end %>
         <br>
         <br>
-        <% if org.user == @user%>
+        <% if @organization.user == @user%>
         <h3>Created by: You!</h3>
         <% else %>
-        <h3>Created by: <%=org.user.first_name%> <%=org.user.last_name%></h3>
+        <h3>Created by: <%=@organization.user.first_name%> <%=@organization.user.last_name%></h3>
         <% end %>
         <h4>Members:</h4>
         <ol>
-            <%= org.members.each do |member|%>
+            <% @organization.members.each do |member|%>
             <li><%=member.first_name%> <%=member.last_name%></li>
             <% end %>
-        </ol>
-    <% end %>     
+        </ol>   
 </div>

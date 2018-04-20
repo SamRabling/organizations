@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :organizations, dependent: :destroy
   has_many :attendees
+  has_and_belongs_to_many :members
   has_many :memberships, through: :members, source: :organizations
   has_secure_password
 

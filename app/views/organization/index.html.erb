@@ -12,6 +12,7 @@
             <p><%=organization.description%></p>
             <% if organization.user == @user %>
                 <p><a href="/organizations/<%= organization.id %>/destroy" data-method="delete">Delete Organization</a></p>
+            <% else %><p><a href="/organizations/<%= organization.id %>/join" data-method="patch">Join Organization</a></p>
             <% end %>
         <% end %>
     </div>
