@@ -1,2 +1,32 @@
-<h1>User#new</h1>
-<p>Find me in app/views/user/new.html.erb</p>
+<div class="register">
+    <h1>Don't have an account? Register!</h1>
+    <% if flash[:errors] %>
+        <% flash[:errors].each do |error| %>
+            <h5> <%= error %> </h5>
+        <% end %>
+    <% end %>
+    <form action= "users/create" method = "post">
+        <input type="hidden" name="authenticity_token" value = "<%=form_authenticity_token%>">
+        <label> First Name:</label><input type="text" name="user[first_name">
+        <label> Last Name:</label><input type="text" name="user[first_name">
+        <label> Email:</label> <input type="text" name="user[email]">
+        <p>Make sure your password is at least 8 characters.</p>
+        <label> Password:</label> <input type="text" name="user[password]"> 
+        <input type="submit" value="Log In" name="submit">
+    </form>
+</div>
+
+<div class="login">
+    <h1>Been here before? Log in!</h1>
+    <% if flash[:errors] %>
+        <% flash[:errors].each do |error| %>
+            <h5> <%= error %> </h5>
+        <% end %>
+    <% end %>
+    <form action= "sessions/create" method = "post">
+        <input type="hidden" name="authenticity_token" value = "<%=form_authenticity_token%>">
+        <label> Email:</label> <input type="text" name="user[email]">
+        <label> Password:</label> <input type="text" name="user[password]"> 
+        <input type="submit" value="Log In" name="submit">
+    </form>
+</div>

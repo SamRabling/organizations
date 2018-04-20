@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   has_many :organizations, dependent: :destroy
   has_many :attendees
+  has_many :memberships, through: :members, source: :organizations
   has_secure_password
+
   before_validation :email_lowercase
   EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]+)\z/i
 
