@@ -28,7 +28,7 @@ class OrganizationController < ApplicationController
   def join
     @organization = Organization.find(params[:id])
     @user = current_user
-    @user.members += [@organization]
+    @organization.members += [@user]
     redirect_to "/organizations"
   end
 
