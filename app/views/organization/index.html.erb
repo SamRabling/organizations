@@ -6,7 +6,7 @@
 <div class="wrapper">
     <div class="main-content">
         <h3>Here are the organizations you may join:</h3>
-        <% @organizations.each do |org|%>
+        <% @organizations.each do |organization|%>
             <h5><a href=""><%= organization.name %></a></h5>
             <p>Members: <%=organization.memberships.count%></p>
             <p><%=organization.content%></p>
